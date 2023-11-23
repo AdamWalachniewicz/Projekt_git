@@ -5,12 +5,20 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
-@Table(name = "order")
+@Table(name = "orders")
+@Data
 @Getter
 @Setter
-@Data
 public class OrderEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private Double quantity;
+    private Double sum;
+
     public OrderEntity() {
     }
 
@@ -19,9 +27,10 @@ public class OrderEntity {
         this.sum = sum;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private Double quantity;
-    private Double sum;
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    ClientEntity client;
+
+    @OneToMany(mappedBy = "orders")
+    List<TicketEntity> tickets;
 }

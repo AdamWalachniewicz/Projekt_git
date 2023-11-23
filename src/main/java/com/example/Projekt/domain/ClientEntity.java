@@ -13,6 +13,13 @@ import java.util.List;
 @Setter
 @Data
 public class ClientEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private String surname;
+    private String email;
+
     public ClientEntity() {
     }
 
@@ -22,11 +29,6 @@ public class ClientEntity {
         this.email = email;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private String name;
-    private String surname;
-    private String email;
+    @OneToMany(mappedBy = "client")
     List<OrderEntity> orders;
 }

@@ -10,7 +10,8 @@ import java.util.List;
 @Repository
 @Transactional
 public interface ClientRepository extends JpaRepository<ClientEntity, Long> {
-    public ClientEntity findByName(String name, String surname);
+
+    public ClientEntity findByNameAndSurname(String name, String surname);
 
     public List<ClientEntity> findAll();
 

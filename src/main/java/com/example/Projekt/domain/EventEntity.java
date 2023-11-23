@@ -17,10 +17,13 @@ import java.util.List;
 @AllArgsConstructor
 public class EventEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
     private Date date;
     private List<String> bands;
+
+    @OneToMany(mappedBy = "event")
+    List<TicketEntity> tickets;
 }

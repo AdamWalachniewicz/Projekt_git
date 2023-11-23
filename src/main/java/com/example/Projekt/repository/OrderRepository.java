@@ -14,4 +14,6 @@ public interface OrderRepository extends JpaRepository<OrderEntity, Long> {
 
     public List<OrderEntity> findAll();
 
+    List<OrderEntity> findAllByClient(ClientEntity client);
+
 }
