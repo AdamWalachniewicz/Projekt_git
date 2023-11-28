@@ -28,6 +28,4 @@ public class ClientRestController {
     public List<ClientEntity> getAllClients() {
         return clientService.getAllClients();
     }
-
-
 }
