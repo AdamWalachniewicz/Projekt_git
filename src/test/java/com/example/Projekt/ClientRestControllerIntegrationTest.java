@@ -16,6 +16,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultMatcher;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -62,5 +63,27 @@ public class ClientRestControllerIntegrationTest {
         List<ClientEntity> found = repository.findAll();
         assertThat(found).extracting(ClientEntity::getName)
                 .containsOnly("Jan");
+    }
+
+        @Test
+    public void givenClients_whenGetClients_thenStatus200() throws Exception {
+        createTestClient("Andrzej", "Kowalski", "a.kowal@gmail.com");
+        createTestClient("Jan", "Skrzetuski", "jwisniowiecki@wp.pl");
+
+        mvc.perform(get("/api/clients")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$", hasSize(greaterThanOrEqualTo(2))))
+                .andExpect(jsonPath("$[0].name", is("Andrzej")))
+                .andExpect(jsonPath("$[0].surname", is("Kowalski")))
+                .andExpect(jsonPath("$[1].name", is("Jan")))
+                .andExpect(jsonPath("$[1].surname", is("Skrzetuski")));
+    }
+
+    private void createTestClient(String name, String surname, String email) {
+        ClientEntity client = new ClientEntity(null, name, surname, email, new ArrayList<>());
+        repository.saveAndFlush(client);
     }
 }
