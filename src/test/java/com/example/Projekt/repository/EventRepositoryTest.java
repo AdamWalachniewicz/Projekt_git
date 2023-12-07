@@ -18,13 +18,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class EventRepositoryTest {
     EventEntity event;
-
     @BeforeEach
     void init() throws IOException, Exception {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
         event = new EventEntity(null, "Great Tour", formatter.parse("2001-05-05"), new ArrayList<>(), new ArrayList<>());
     }
-
     @Test
     void tesClientNameAndDate() {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
@@ -32,5 +30,4 @@ class EventRepositoryTest {
                 () -> assertEquals("Great Tour", event.getName()),
                 () -> assertEquals(formatter.parse("2001-05-05"), event.getDate()));
     }
-
 }
