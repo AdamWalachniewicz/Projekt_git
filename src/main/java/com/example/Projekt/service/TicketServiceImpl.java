@@ -1,6 +1,5 @@
 package com.example.Projekt.service;
 
-import com.example.Projekt.domain.ClientEntity;
 import com.example.Projekt.domain.EventEntity;
 import com.example.Projekt.domain.OrderEntity;
 import com.example.Projekt.domain.TicketEntity;
@@ -16,7 +15,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class TicketServiceImpl implements TicketService{
+public class TicketServiceImpl implements TicketService {
     @Autowired
     private TicketRepository ticketRepository;
     @Autowired
@@ -26,14 +25,18 @@ public class TicketServiceImpl implements TicketService{
     private EventRepository eventRepository;
 
     @Override
-    public TicketEntity getTicketById(Long id) { return ticketRepository.findById(id).orElse(null);}
+    public TicketEntity getTicketById(Long id) {
+        return ticketRepository.findById(id).orElse(null);
+    }
 
     @Order
-    public List<TicketEntity> getAllTickets() { return ticketRepository.findAll();}
+    public List<TicketEntity> getAllTickets() {
+        return ticketRepository.findAll();
+    }
 
     @Override
     public boolean exists(Long id) {
-        if (ticketRepository.findById(id)!=null) {
+        if (ticketRepository.findById(id) != null) {
             return true;
         }
         return false;

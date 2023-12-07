@@ -1,7 +1,6 @@
 package com.example.Projekt.service;
 
 import com.example.Projekt.domain.EventEntity;
-import com.example.Projekt.domain.OrderEntity;
 import com.example.Projekt.domain.TicketEntity;
 import com.example.Projekt.repository.EventRepository;
 import com.example.Projekt.repository.TicketRepository;
@@ -28,15 +27,19 @@ public class EventServiceImpl implements EventService {
     public EventEntity getEventByName(String name) {
         return eventRepository.findByName(name);
     }
+
     @Override
     public List<EventEntity> getAllEvents() {
         return eventRepository.findAll();
     }
+
     public List<TicketEntity> showTickets(Long eventId) {
         EventEntity event = eventRepository.findById(eventId).orElseThrow();
         return ticketRepository.findAllByEvent(event);
     }
+
     @Override
-    public EventEntity save(EventEntity event) { return eventRepository.save(event);
+    public EventEntity save(EventEntity event) {
+        return eventRepository.save(event);
     }
 }

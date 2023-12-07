@@ -28,6 +28,7 @@ public class ClientServiceImpl implements ClientService {
     public ClientEntity getClientByName(String name, String surname) {
         return clientRepository.findByNameAndSurname(name, surname);
     }
+
     @Override
     public List<ClientEntity> getAllClients() {
         return clientRepository.findAll();
@@ -37,13 +38,15 @@ public class ClientServiceImpl implements ClientService {
         ClientEntity client = clientRepository.findById(clientId).orElseThrow();
         return orderRepository.findAllByClient(client);
     }
+
     @Override
     public boolean exists(String email) {
-        if (clientRepository.findByEmail(email)!=null) {
+        if (clientRepository.findByEmail(email) != null) {
             return true;
         }
         return false;
     }
+
     @Override
     public ClientEntity save(ClientEntity client) {
         return clientRepository.save(client);

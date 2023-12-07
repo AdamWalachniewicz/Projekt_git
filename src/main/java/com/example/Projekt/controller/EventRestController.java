@@ -1,7 +1,10 @@
 package com.example.Projekt.controller;
 
 import com.example.Projekt.domain.EventEntity;
-import com.example.Projekt.dtos.*;
+import com.example.Projekt.dtos.EventDto;
+import com.example.Projekt.dtos.EventDtoMapper;
+import com.example.Projekt.dtos.TicketDto;
+import com.example.Projekt.dtos.TicketDtoMapper;
 import com.example.Projekt.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

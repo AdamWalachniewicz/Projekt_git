@@ -20,15 +20,6 @@ public class ClientEntity {
     private String surname;
     private String email;
 
-//    public ClientEntity() {
-//    }
-//
-//    public ClientEntity(String name, String surname, String email) {
-//        this.name = name;
-//        this.surname = surname;
-//        this.email = email;
-//    }
-
     @OneToMany(mappedBy = "client")
     List<OrderEntity> orders;
 }

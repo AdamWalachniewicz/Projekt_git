@@ -1,8 +1,6 @@
 package com.example.Projekt.dtos;
 
-import com.example.Projekt.domain.ClientEntity;
 import com.example.Projekt.domain.EventEntity;
-import jdk.jfr.Event;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 

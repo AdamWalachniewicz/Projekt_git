@@ -1,9 +1,6 @@
 package com.example.Projekt.controller;
 
-import com.example.Projekt.domain.OrderEntity;
 import com.example.Projekt.domain.TicketEntity;
-import com.example.Projekt.dtos.OrderDto;
-import com.example.Projekt.dtos.OrderDtoMapper;
 import com.example.Projekt.dtos.TicketDto;
 import com.example.Projekt.dtos.TicketDtoMapper;
 import com.example.Projekt.service.TicketService;
