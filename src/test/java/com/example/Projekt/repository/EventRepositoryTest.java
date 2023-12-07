@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class EventRepositoryTest {
     EventEntity event;
     @BeforeEach
-    void init() throws IOException, Exception {
+    void init() throws Exception {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
         event = new EventEntity(null, "Great Tour", formatter.parse("2001-05-05"), new ArrayList<>(), new ArrayList<>());
     }
