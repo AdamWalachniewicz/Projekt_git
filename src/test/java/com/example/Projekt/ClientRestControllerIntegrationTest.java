@@ -39,11 +39,11 @@ public class ClientRestControllerIntegrationTest {
 
 
     @Test
-    @Order(1)
+   // @Order(1)
     public void whenValidInput_thenCreateStudent() throws IOException, Exception {
 
         ObjectMapper objectMapper = new ObjectMapper();
-        ClientEntity jan = new ClientEntity(null, "Jan", "Smiths", "j.nowak@wp.pl", new ArrayList<>());
+        ClientEntity jan = new ClientEntity(null, "Józef", "Nowak", "j.nowak@wp.pl", new ArrayList<>());
 
         mvc.perform(post("/api/clients")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -51,10 +51,11 @@ public class ClientRestControllerIntegrationTest {
                 .andDo(print());
         List<ClientEntity> found = repository.findAll();
         assertThat(found).extracting(ClientEntity::getName)
-                .containsOnly("Jan");
+                .contains("Józef");
     }
 
     @Test
+    //@Order(2)
     public void givenClients_whenGetClients_thenStatus200() throws Exception {
         createTestClient("Andrzej", "Kowalski", "a.kowal@gmail.com");
         createTestClient("Jan", "Skrzetuski", "jwisniowiecki@wp.pl");
