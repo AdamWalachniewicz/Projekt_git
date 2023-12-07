@@ -1,9 +1,7 @@
 package com.example.Projekt.domain;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
@@ -12,6 +10,8 @@ import java.util.List;
 @Data
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class OrderEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,13 +19,6 @@ public class OrderEntity {
     private Double quantity;
     private Double sum;
 
-    public OrderEntity() {
-    }
-
-    public OrderEntity(Double quantity, Double sum) {
-        this.quantity = quantity;
-        this.sum = sum;
-    }
 
     @ManyToOne
     @JoinColumn(name = "client_id")
